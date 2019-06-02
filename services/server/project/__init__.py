@@ -28,8 +28,6 @@ def create_app(script_info=None):
     migrate.init_app(app, db)
 
     # register blueprints
-    from project.api.books import books_blueprint
-    app.register_blueprint(books_blueprint)
     from project.api.flashcards import flashcards_blueprint
     app.register_blueprint(flashcards_blueprint)
 
