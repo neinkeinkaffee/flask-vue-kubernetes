@@ -1,7 +1,6 @@
 from flask.cli import FlaskGroup
 
 from project import create_app, db
-from project.api.models import Book
 from project.api.models import Flashcard
 
 
