@@ -23,7 +23,6 @@ $ docker-compose exec server python manage.py seed_db
 
 Test it out at:
 
-1. [http://localhost:8080/](http://localhost:8080/)
 1. [http://localhost:5001/books/ping](http://localhost:5001/books/ping)
 1. [http://localhost:5001/books](http://localhost:5001/books)
 
@@ -117,50 +116,3 @@ $ kubectl get pods
 $ kubectl exec flask-<POD_IDENTIFIER> --stdin --tty -- python manage.py recreate_db
 $ kubectl exec flask-<POD_IDENTIFIER> --stdin --tty -- python manage.py seed_db
 ```
-
-#### Ingress
-
-Enable and apply:
-
-```sh
-$ minikube addons enable ingress
-$ kubectl apply -f ./kubernetes/minikube-ingress.yml
-```
-
-Add entry to */etc/hosts* file:
-
-```
-<MINIKUBE_IP> hello.world
-```
-
-Try it out:
-
-1. [http://hello.world/books/ping](http://hello.world/books/ping)
-1. [http://hello.world/books](http://hello.world/books)
-
-
-#### Vue
-
-Build and push the image to Docker Hub:
-
-```sh
-$ docker build -t mjhea0/vue-kubernetes ./services/client \
-    -f ./services/client/Dockerfile-minikube
-$ docker push mjhea0/vue-kubernetes
-```
-
-> Again, replace `mjhea0` with your Docker Hub namespace in the above commands as well as in *kubernetes/vue-deployment.yml*
-
-Create the deployment:
-
-```sh
-$ kubectl create -f ./kubernetes/vue-deployment.yml
-```
-
-Create the service:
-
-```sh
-$ kubectl create -f ./kubernetes/vue-service.yml
-```
-
-Try it out at [http://hello.world/](http://hello.world/).
