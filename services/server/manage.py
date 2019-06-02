@@ -2,6 +2,7 @@ from flask.cli import FlaskGroup
 
 from project import create_app, db
 from project.api.models import Book
+from project.api.models import Flashcard
 
 
 app = create_app()
@@ -18,20 +19,13 @@ def recreate_db():
 @cli.command('seed_db')
 def seed_db():
     """Seeds the database."""
-    db.session.add(Book(
-        title='On the Road',
-        author='Jack Kerouac',
-        read=True
+    db.session.add(Flashcard(
+        chinese='chi le ma?',
+        english='Have you eaten?'
     ))
-    db.session.add(Book(
-        title='Harry Potter and the Philosopher\'s Stone',
-        author='J. K. Rowling',
-        read=False
-    ))
-    db.session.add(Book(
-        title='Green Eggs and Ham',
-        author='Dr. Seuss',
-        read=True
+    db.session.add(Flashcard(
+        chinese='qu nali a',
+        english='Where are you headed?'
     ))
     db.session.commit()
 
