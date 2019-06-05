@@ -23,8 +23,8 @@ $ docker-compose exec server python manage.py seed_db
 
 Test it out at:
 
-1. [http://localhost:5001/books/ping](http://localhost:5001/books/ping)
-1. [http://localhost:5001/books](http://localhost:5001/books)
+1. [http://localhost:5001/flashcards/ping](http://localhost:5001/flashcards/ping)
+1. [http://localhost:5001/flashcards](http://localhost:5001/flashcards)
 
 ### Kubernetes
 
@@ -83,7 +83,7 @@ Create the database:
 
 ```sh
 $ kubectl get pods
-$ kubectl exec postgres-<POD_IDENTIFIER> --stdin --tty -- createdb -U postgres books
+$ kubectl exec postgres-<POD_IDENTIFIER> --stdin --tty -- createdb -U postgres flashcards
 ```
 
 #### Flask
